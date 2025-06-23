@@ -13926,7 +13926,7 @@ if (substanceType) specifiersForReport += `Substance Type: ${substanceType}\n`;
 
             let report = `${reportHeaderText}\n\n`;
 
-            const checkedCriteriaElements = document.querySelectorAll('#criteria-container input[type="checkbox"]:checked:not([id^="criterion-A"])');
+            const checkedCriteriaElements = document.querySelectorAll('#criteria-container input[type="checkbox"]:checked');
             if (checkedCriteriaElements.length > 0) {
                 report += 'Criteria Met:\n';
                 checkedCriteriaElements.forEach(cb => {
