@@ -13731,14 +13731,7 @@ function renderSpecifiers(specifiers, container) {
             container.innerHTML = '<h3><strong>Specifiers</strong></h3>';
             if (specifiers && specifiers.length > 0) {
                  specifiers.forEach(specifier => {
-                    // This block is for calculated severity and should not be rendered as a user-selectable option
-                    if (specifier.name === "Severity") {
-                        const div = document.createElement('div');
-                        div.className = 'mb-4';
-                        div.innerHTML = `<strong class="text-gray-800">${specifier.name}</strong><div id="calculated-severity" class="mt-1 text-gray-600">Severity is determined by the number of criteria met.</div>`;
-                        container.appendChild(div);
-                        return;
-                    }
+                    // The special "if" block that handled severity differently has been removed.
 
                     const div = document.createElement('div');
                     div.className = 'mb-4';
@@ -13749,7 +13742,8 @@ function renderSpecifiers(specifiers, container) {
 
                     specifier.options.forEach(option => {
                         const optionName = typeof option === 'string' ? option : option.name;
-                        const optionDescription = option.description || '';
+                        // For Intellectual Disability, the description is in the 'details' object, not a simple 'description' string.
+                        const optionDescription = option.description || (option.details ? Object.entries(option.details).map(([key, value]) => `${key}: ${value}`).join('; ') : '');
                         const optionId = (specifier.name + '-' + optionName).replace(/[^a-zA-Z0-9]/g, '-');
                         
                         const p = document.createElement('p');
@@ -13768,8 +13762,14 @@ function renderSpecifiers(specifiers, container) {
                         
                         const label = document.createElement('label');
                         label.htmlFor = input.id;
-                        label.textContent = optionDescription ? `${optionName} - ${optionDescription}` : optionName;
+                        // Use a simpler label for the radio button itself.
+                        label.textContent = optionName;
                         
+                        // Add a title attribute (tooltip) for the full description if it exists
+                        if (optionDescription) {
+                            label.title = optionDescription;
+                        }
+
                         p.appendChild(input);
                         p.appendChild(label);
                         div.appendChild(p);
