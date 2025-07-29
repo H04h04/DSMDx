@@ -31,7 +31,7 @@
         .criteria-list {
             padding-left: 1.5rem;
         }
-        .justification-box {
+        .substantiation-box {
             margin-top: 0.5rem;
             margin-bottom: 1rem;
         }
@@ -75,7 +75,7 @@
                 <select id="diagnoses" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"><option value="Intellectual Developmental Disorder (Intellectual Disability)">Intellectual Developmental Disorder (Intellectual Disability)</option><option value="Global Developmental Delay">Global Developmental Delay</option><option value="Unspecified Intellectual Developmental Disorder (Intellectual Disability)">Unspecified Intellectual Developmental Disorder (Intellectual Disability)</option><option value="Language Disorder">Language Disorder</option><option value="Speech Sound Disorder">Speech Sound Disorder</option><option value="Childhood-Onset Fluency Disorder (Stuttering)">Childhood-Onset Fluency Disorder (Stuttering)</option><option value="Social (Pragmatic) Communication Disorder">Social (Pragmatic) Communication Disorder</option><option value="Unspecified Communication Disorder">Unspecified Communication Disorder</option><option value="Autism Spectrum Disorder">Autism Spectrum Disorder</option><option value="Attention-Deficit/Hyperactivity Disorder">Attention-Deficit/Hyperactivity Disorder</option><option value="Other Specified Attention-Deficit/Hyperactivity Disorder">Other Specified Attention-Deficit/Hyperactivity Disorder</option><option value="Unspecified Attention-Deficit/Hyperactivity Disorder">Unspecified Attention-Deficit/Hyperactivity Disorder</option><option value="Specific Learning Disorder">Specific Learning Disorder</option><option value="Developmental Coordination Disorder">Developmental Coordination Disorder</option><option value="Stereotypic Movement Disorder">Stereotypic Movement Disorder</option><option value="Tourette&#39;s Disorder">Tourette's Disorder</option><option value="Persistent (Chronic) Motor or Vocal Tic Disorder">Persistent (Chronic) Motor or Vocal Tic Disorder</option><option value="Provisional Tic Disorder">Provisional Tic Disorder</option><option value="Other Specified Tic Disorder">Other Specified Tic Disorder</option><option value="Unspecified Tic Disorder">Unspecified Tic Disorder</option><option value="Other Specified Neurodevelopmental Disorder">Other Specified Neurodevelopmental Disorder</option><option value="Unspecified Neurodevelopmental Disorder">Unspecified Neurodevelopmental Disorder</option></select>
             </div>
 
-            <div id="criteria-container" class="mb-4"><h3><strong>Diagnostic Criteria</strong></h3><ul class="criteria-list ml-0"><li class="mb-2"><input type="checkbox" id="criterion-A" class="mr-2 leading-tight"><label for="criterion-A">A. Deficits in intellectual functions, such as reasoning, problem solving, planning, abstract thinking, judgment, academic learning, and learning from experience, confirmed by both clinical assessment and individualized, standardized intelligence testing.</label><div class="justification-div" style="display: none;"><textarea class="justification-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="Justification..."></textarea></div></li><li class="mb-2"><input type="checkbox" id="criterion-B" class="mr-2 leading-tight"><label for="criterion-B">B. Deficits in adaptive functioning that result in failure to meet developmental and sociocultural standards for personal independence and social responsibility. Without ongoing support, the adaptive deficits limit functioning in one or more activities of daily life, such as communication, social participation, and independent living, across multiple environments, such as home, school, work, and community.</label><div class="justification-div" style="display: none;"><textarea class="justification-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="Justification..."></textarea></div></li><li class="mb-2"><input type="checkbox" id="criterion-C" class="mr-2 leading-tight"><label for="criterion-C">C. Onset of intellectual and adaptive deficits during the developmental period.</label><div class="justification-div" style="display: none;"><textarea class="justification-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="Justification..."></textarea></div></li></ul></div>
+            <div id="criteria-container" class="mb-4"><h3><strong>Diagnostic Criteria</strong></h3><ul class="criteria-list ml-0"><li class="mb-2"><input type="checkbox" id="criterion-A" class="mr-2 leading-tight"><label for="criterion-A">A. Deficits in intellectual functions, such as reasoning, problem solving, planning, abstract thinking, judgment, academic learning, and learning from experience, confirmed by both clinical assessment and individualized, standardized intelligence testing.</label><div class="substantiation-div" style="display: none;"><textarea class="substantiation-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="substantiation..."></textarea></div></li><li class="mb-2"><input type="checkbox" id="criterion-B" class="mr-2 leading-tight"><label for="criterion-B">B. Deficits in adaptive functioning that result in failure to meet developmental and sociocultural standards for personal independence and social responsibility. Without ongoing support, the adaptive deficits limit functioning in one or more activities of daily life, such as communication, social participation, and independent living, across multiple environments, such as home, school, work, and community.</label><div class="substantiation-div" style="display: none;"><textarea class="substantiation-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="substantiation..."></textarea></div></li><li class="mb-2"><input type="checkbox" id="criterion-C" class="mr-2 leading-tight"><label for="criterion-C">C. Onset of intellectual and adaptive deficits during the developmental period.</label><div class="substantiation-div" style="display: none;"><textarea class="substantiation-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="substantiation..."></textarea></div></li></ul></div>
             <div id="specifiers-container" class="mb-4"><h3><strong>Specifiers</strong></h3><div class="mb-4"><strong class="text-gray-800">Severity</strong><div id="calculated-severity" class="mt-1 text-gray-600">Severity is determined by the number of criteria met.</div></div></div>
             <div id="icd-code-container" class="mb-4"><h3 class="text-lg font-semibold text-gray-800">ICD-10 Code: <span class="font-bold text-indigo-600">N/A</span></h3></div>
 
@@ -11032,7 +11032,7 @@
             },
             {
               "code": "7",
-              "text": "Has recurrent suspicions, without justification, regarding fidelity of spouse or sexual partner."
+              "text": "Has recurrent suspicions, without substantiation, regarding fidelity of spouse or sexual partner."
             }
           ]
         },
@@ -13680,13 +13680,13 @@ function renderCriteria(criteria, container, indent = 0) {
                     checkbox.id = `criterion-${criterionId}`;
                     checkbox.className = 'mr-2 leading-tight';
                     checkbox.addEventListener('change', () => {
-                        const justificationDiv = li.querySelector('.justification-div');
-                        if (justificationDiv) {
+                        const substantiationDiv = li.querySelector('.substantiation-div');
+                        if (substantiationDiv) {
                             if (checkbox.checked) {
-                                justificationDiv.style.display = 'block';
+                                substantiationDiv.style.display = 'block';
                             } else {
-                                justificationDiv.style.display = 'none';
-                                justificationDiv.querySelector('textarea').value = '';
+                                substantiationDiv.style.display = 'none';
+                                substantiationDiv.querySelector('textarea').value = '';
                             }
                         }
                         updateReport();
@@ -13699,12 +13699,12 @@ function renderCriteria(criteria, container, indent = 0) {
                     li.appendChild(checkbox);
                     li.appendChild(label);
 
-                    const justificationDiv = document.createElement('div');
-                    justificationDiv.className = 'justification-div';
-                    justificationDiv.style.display = 'none';
-                    justificationDiv.innerHTML = `<textarea class="justification-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="Justification..."></textarea>`;
-                    justificationDiv.querySelector('textarea').addEventListener('input', updateReport);
-                    li.appendChild(justificationDiv);
+                    const substantiationDiv = document.createElement('div');
+                    substantiationDiv.className = 'substantiation-div';
+                    substantiationDiv.style.display = 'none';
+                    substantiationDiv.innerHTML = `<textarea class="substantiation-box w-full p-2 border border-gray-300 rounded-md mt-1" placeholder="substantiation..."></textarea>`;
+                    substantiationDiv.querySelector('textarea').addEventListener('input', updateReport);
+                    li.appendChild(substantiationDiv);
                 }
 
                 // This part handles nested criteria and remains the same.
@@ -13933,12 +13933,12 @@ if (substanceType) specifiersForReport += `Substance Type: ${substanceType}\n`;
                     const label = cb.nextElementSibling;
                     if (label) {
                         const fullLabelText = label.textContent;
-                        const justificationDiv = cb.parentElement.querySelector('.justification-div');
-                         if(justificationDiv){
-                            const justificationText = justificationDiv.querySelector('textarea').value;
+                        const substantiationDiv = cb.parentElement.querySelector('.substantiation-div');
+                         if(substantiationDiv){
+                            const substantiationText = substantiationDiv.querySelector('textarea').value;
                             report += `  - ${fullLabelText}\n`;
-                            if (justificationText) {
-                                report += `    Justification: ${justificationText}\n`;
+                            if (substantiationText) {
+                                report += `    substantiation: ${substantiationText}\n`;
                             }
                         }
                     }
